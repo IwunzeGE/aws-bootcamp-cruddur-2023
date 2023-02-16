@@ -1,5 +1,37 @@
 # Week 0 — Billing and Architecture
 
+## Requirements
+1. AWS account
+2. 
+
+## AWS Budgets
+AWS budgets allow you to set custom cost and usage targets for your resources, and receive alerts when your usage exceeds those targets
+
+
+You could set up budgets via the console or AWS CLI
+
+### Setting up Budgets via the Console
+
+a. Log in to your AWS console
+
+b. Click on the "Billing & Cost Management" option
+
+c. Select "Budgets" from the dropdown menu
+
+d. Click on the "Create budget" button
+
+e. Select the budget type you want to create (e.g. Cost budget, Usage budget, etc.)
+
+- Cost budgets: You can set a budget for your AWS costs, and receive alerts when your costs exceed your budget.
+- Usage budgets: You can set a budget for your AWS usage, and receive alerts when your usage exceeds your budget.
+- Cost and usage budgets: You can set a budget for both your AWS costs and usage, and receive alerts when either exceeds the budget.
+
+f. Set the budget amount and timeframe (e.g. monthly budget of $500 for the next 6 months)
+
+g. Choose the resources you want to include in the budget (e.g. all resources in your AWS account, specific AWS services, specific tags, etc.)
+
+h. Set up alerts to be notified when your usage or costs exceed the budget amount.
+
 ![Screenshot (53)](https://user-images.githubusercontent.com/110903886/219217558-31c93fae-8f29-4303-9579-f64e03f6f80b.png)
 
 [link](https://lucid.app/lucidchart/d8ada944-82ba-4131-8eac-46233bdfbae8/edit?viewport_loc=-774%2C-96%2C3330%2C1461%2C0_0&invitationId=inv_4141424b-aae1-4e6d-90a2-a8c78987c1e7)

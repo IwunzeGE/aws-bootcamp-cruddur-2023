@@ -40,10 +40,10 @@ b. Create a budget in the AWS Management Console, noting the budget name and the
 
 c. In your terminal, enter the following command to create a new budget:
 
-`aws budgets create-budget --account-id your-account-id --budget budget-name --budget-type COST --limit-amount limit-amount --limit-unit limit-unit --time-unit MONTHLY --start-date start-date --end-date end-date --email-subject email-subject --subscriber-email-addresses email-address-1 email-address-2`
+```aws budgets create-budget --account-id your-account-id --budget budget-name --budget-type COST --limit-amount limit-amount --limit-unit limit-unit --time-unit MONTHLY --start-date start-date --end-date end-date --email-subject email-subject --subscriber-email-addresses email-address-1 email-address-2
+```
 
-
-*Replace the your-account-id with your AWS account ID, budget-name with the name of your budget, limit-amount with the budget amount, and limit-unit with the currency code (e.g., USD). Replace start-date and end-date with the start and end dates of the budget period (in YYYY-MM-DD format). You can also add multiple email addresses by separating them with spaces after the --subscriber-email-addresses flag.
+*Replace the your-account-id with your AWS account ID, budget-name with the name of your budget, limit-amount with the budget amount, and limit-unit with the currency code (e.g., USD). Replace start-date and end-date with the start and end dates of the budget period (in YYYY-MM-DD format). You can also add multiple email addresses by separating them with spaces after the --subscriber-email-addresses flag.*
 
 d. Press Enter to run the command. If successful, you should see the details of the newly created budget.
 

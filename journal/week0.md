@@ -32,6 +32,20 @@ g. Choose the resources you want to include in the budget (e.g. all resources in
 
 h. Set up alerts to be notified when your usage or costs exceed the budget amount.
 
+### Setting up Budgets via the CLI
+
+a. Install the AWS CLI on your local machine if you haven't already. You can download and install it from the official AWS website.
+
+b. Create a budget in the AWS Management Console, noting the budget name and the email addresses of the recipients.
+
+c. In your terminal, enter the following command to create a new budget:
+
+`aws budgets create-budget --account-id your-account-id --budget budget-name --budget-type COST --limit-amount limit-amount --limit-unit limit-unit --time-unit MONTHLY --start-date start-date --end-date end-date --email-subject email-subject --subscriber-email-addresses email-address-1 email-address-2`
+
+
+
+
+
 ![Screenshot (53)](https://user-images.githubusercontent.com/110903886/219217558-31c93fae-8f29-4303-9579-f64e03f6f80b.png)
 
 [link](https://lucid.app/lucidchart/d8ada944-82ba-4131-8eac-46233bdfbae8/edit?viewport_loc=-774%2C-96%2C3330%2C1461%2C0_0&invitationId=inv_4141424b-aae1-4e6d-90a2-a8c78987c1e7)

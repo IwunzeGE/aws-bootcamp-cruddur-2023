@@ -24,33 +24,65 @@ e. Select the budget type you want to create (e.g. Cost budget, Usage budget, et
 - Usage budgets: You can set a budget for your AWS usage, and receive alerts when your usage exceeds your budget.
 - Cost and usage budgets: You can set a budget for both your AWS costs and usage, and receive alerts when either exceeds the budget.
 
-f. Set the budget amount and timeframe (e.g. monthly budget of $500 for the next 6 months)
+f. Set the budget amount and timeframe (e.g. monthly budget of $10 for the next 6 months)
 
 g. Choose the resources you want to include in the budget (e.g. all resources in your AWS account, specific AWS services, specific tags, etc.)
 
 h. Set up alerts to be notified when your usage or costs exceed the budget amount.
+
 ### Creating IAM USERS
+- Log in to your AWS account using your credentials.
+- Navigate to the IAM console by selecting "Services" from the top menu, then selecting "IAM" under the "Security, Identity & Compliance" category.
+- In the left navigation pane, click "Users".
+- Click the "Add user" button.
+- Enter a name for the new user and select the access type that you want to grant to the user. You can select either "Programmatic access" for API access or "AWS Management Console access" for console access, or both.
+- Set a password for the user, or choose the option to allow the user to create their own password.
+- Configure the user's permissions by selecting the appropriate checkboxes in the "Set permissions" section. You can either assign the user to an existing group with predefined permissions or create a custom policy for the user.
+- Review your settings and click the "Create user" button.
+- Once the user is created, you will see their credentials, including their access key and secret access key, which are required for programmatic access. You can also download a CSV file containing the user's login information and credentials for future reference.
 
 ![IAM3](https://user-images.githubusercontent.com/110903886/220133151-615a91d2-2e3b-4d5d-9c8b-2d15efded12e.png)
 ![IAM1](https://user-images.githubusercontent.com/110903886/220133158-977f247a-8153-4e5d-a444-e153f2d6ea1f.png)
 ![IAM2](https://user-images.githubusercontent.com/110903886/220133163-daf3cc5e-1c3f-49bf-a9d8-53d03fa6e091.png)
 
+###Setting Up the AWS CLI on Gitpod
+
+- Install the CLI via the terminal using this code
+
+```curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+- Configure your credentials using `aws configure`
+
+You will be prompted to enter your AWS Access Key ID, AWS Secret Access Key, default region name, and default output format.
+
+Enter your Access Key ID and Secret Access Key, which can be found in your AWS Management Console under the "IAM" service.
+
+Enter the default region name and output format. The region is the geographical location of your AWS resources. You can find a list of available regions in the AWS documentation. The output format can be either "json", "text", or "table".
+
+```AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-west-2
+Default output format [None]: json
+```
+
+- Once you have entered all the required information, the AWS CLI is now configured and ready to use. 
+
 ### Setting up Budgets via the CLI
 
-a. Install the AWS CLI on your local machine if you haven't already. You can download and install it from the official AWS website.
+The budget will be created using this command but first you'll have to set up the budget.json and notification-with-subscribers.json file
 
-b. Create a budget in the AWS Management Console, noting the budget name and the email addresses of the recipients.
 
-c. In your terminal, enter the following command to create a new budget:
-
-```
-aws budgets create-budget --account-id your-account-id --budget budget-name --budget-type COST --limit-amount limit-amount --limit-unit limit-unit --time-unit MONTHLY --start-date start-date --end-date end-date --email-subject email-subject --subscriber-email-addresses email-address-1 email-address-2
-
+```aws budgets create-budget \
+    --account-id 111122223333 \
+    --budget file://budget.json \
+    --notifications-with-subscribers file://notifications-with-subscribers.json
 ```
 
-*Replace the your-account-id with your AWS account ID, budget-name with the name of your budget, limit-amount with the budget amount, and limit-unit with the currency code (e.g., USD). Replace start-date and end-date with the start and end dates of the budget period (in YYYY-MM-DD format). You can also add multiple email addresses by separating them with spaces after the --subscriber-email-addresses flag.*
+Press Enter to run the command. If successful, you should see the details of the newly created budget.
 
-d. Press Enter to run the command. If successful, you should see the details of the newly created budget.
 
 ## Conceptual Diagram
 

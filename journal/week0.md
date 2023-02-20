@@ -45,7 +45,7 @@ h. Set up alerts to be notified when your usage or costs exceed the budget amoun
 ![IAM1](https://user-images.githubusercontent.com/110903886/220133158-977f247a-8153-4e5d-a444-e153f2d6ea1f.png)
 ![IAM2](https://user-images.githubusercontent.com/110903886/220133163-daf3cc5e-1c3f-49bf-a9d8-53d03fa6e091.png)
 
-###Setting Up the AWS CLI on Gitpod
+### Setting Up the AWS CLI on Gitpod
 
 - Install the CLI via the terminal using this code
 
@@ -55,7 +55,13 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
+![CLI install](https://user-images.githubusercontent.com/110903886/220160458-e465d1b3-716b-4455-8517-c70daf0c445f.png)
+
+
+
+
 - Configure your credentials using `aws configure`
+![CLI install2](https://user-images.githubusercontent.com/110903886/220160551-922081a0-46eb-4574-9a22-2f8a97caa535.png)
 
 You will be prompted to enter your AWS Access Key ID, AWS Secret Access Key, default region name, and default output format.
 
@@ -72,6 +78,25 @@ Default output format [None]: json
 
 - Once you have entered all the required information, the AWS CLI is now configured and ready to use. 
 
+- Edit the gitpod.yaml file so that aws-cli reinstalls automatically upon launch using this code
+
+![CLI install3](https://user-images.githubusercontent.com/110903886/220160784-4fed2992-4e88-40e1-b7fc-40d3632b78a5.png)
+
+```
+tasks:
+  - name: aws-cli
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    init: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
+ ```
+ 
+- 
+
 ### Setting up Budgets via the CLI
 
 1. The budget will be created using this command but first you'll have to set up the budget.json and notification-with-subscribers.json file
@@ -83,6 +108,7 @@ Default output format [None]: json
 ```
 - Create two files named budget.json and notification-with-subscribers.json and edit them with the below code respectively
 
+**BUDGETS**
 ```
 {
     "BudgetLimit": {
@@ -116,7 +142,7 @@ Default output format [None]: json
     "TimeUnit": "MONTHLY"
 }
 ```
-
+**NOTIFICATION**
 ```
 [
     {
@@ -135,9 +161,34 @@ Default output format [None]: json
     }
 ]
 ```
+- reference the file paths to match yours
+- Press Enter to run the command. If successful, you should see the details of the newly created budget.
 
-Press Enter to run the command. If successful, you should see the details of the newly created budget.
+![budget cli](https://user-images.githubusercontent.com/110903886/220161122-b6b11045-8251-43f6-bac1-edf20f1e1ea2.png)
 
+- Confirm from console if it was created suceesfully
+
+![budget created](https://user-images.githubusercontent.com/110903886/220161281-de637e73-1699-44b8-8daf-aacb066c4826.png)
+
+### Setting UP SNS via CLI
+- Firstly create an SNS topic
+```
+aws sns create-topic \
+    --name billing-alarm
+```
+
+- Copy the Topic ARN and replace it in the code below
+
+```
+aws sns subscribe \
+    --topic-arn arn:aws:sns:us-east-1:352975067306:billing-alarm \
+    --protocol email \
+    --notification-endpoint somebodye@gmail.com
+```
+
+![sns](https://user-images.githubusercontent.com/110903886/220161919-c9204385-b0e6-49e8-93c3-a378941d18cd.png)
+
+![sns 2](https://user-images.githubusercontent.com/110903886/220161987-6eca3fa7-d722-407f-bf99-ff845a8fd10f.png)
 
 ## Conceptual Diagram
 

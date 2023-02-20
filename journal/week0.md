@@ -2,19 +2,17 @@
 
 ## Requirements
 1. AWS account
-2. 
+2. Lucid account
 
 ## AWS Budgets
-AWS budgets allow you to set custom cost and usage targets for your resources, and receive alerts when your usage exceeds those targets
-
-
-You could set up budgets via the console or AWS CLI
+AWS budgets allow you to set custom cost and usage targets for your resources, and receive alerts when your usage exceeds those targets. I was able to set up budgets via the console or AWS CLI
 
 ### Setting up Budgets via the Console
 
-a. Log in to your AWS console
+a. Logged in to your AWS console
 
 b. Click on the "Billing & Cost Management" option
+
 
 c. Select "Budgets" from the dropdown menu
 
@@ -49,7 +47,15 @@ aws budgets create-budget --account-id your-account-id --budget budget-name --bu
 
 d. Press Enter to run the command. If successful, you should see the details of the newly created budget.
 
+## Conceptual Diagram
 
 ![Screenshot (53)](https://user-images.githubusercontent.com/110903886/219217558-31c93fae-8f29-4303-9579-f64e03f6f80b.png)
 
-[link](https://lucid.app/lucidchart/d8ada944-82ba-4131-8eac-46233bdfbae8/edit?viewport_loc=-774%2C-96%2C3330%2C1461%2C0_0&invitationId=inv_4141424b-aae1-4e6d-90a2-a8c78987c1e7)
+[Link to the conceptual image](https://lucid.app/lucidchart/d8ada944-82ba-4131-8eac-46233bdfbae8/edit?viewport_loc=-774%2C-96%2C3330%2C1461%2C0_0&invitationId=inv_4141424b-aae1-4e6d-90a2-a8c78987c1e7)
+
+
+## Logical Diagram
+
+![Screenshot (54)](https://user-images.githubusercontent.com/110903886/220132525-461f7839-5f6c-4068-82c3-6bbbeb89bc96.png)
+
+[Link to the logical image](https://lucid.app/lucidchart/891abc20-19d0-4c08-ba22-22b47ebf0cb3/edit?viewport_loc=-586%2C-1278%2C3042%2C1364%2C0_0&invitationId=inv_be692115-abdc-4798-a5f1-0222a559edd6)

@@ -206,13 +206,17 @@ aws sns subscribe \
 
 ## Architecture
 
-Sign in to the AWS Console: Log in to your Amazon Web Services account and go to the AWS Well-Architected Tool console.
+1. Sign in to the AWS Console: Log in to your Amazon Web Services account and go to the AWS Well-Architected Tool console.
 
-Build a new workload: In the Well-Architected Tool, you can begin by generating a new workload, which is a group of connected resources that you want to examine and optimize. Give your workload a name and select an AWS account and region for it to be hosted in.
-
-
-Answer the following questions: The tool will ask you a series of questions about the AWS Well-Architected Framework's five pillars: operational excellence, security, reliability, performance efficiency, and cost optimization. Based on your present architecture and aims, answer these questions to the best of your ability. Based on your present architecture and aims, answer these questions to the best of your ability.
+2. Build a new workload: In the Well-Architected Tool, you can begin by generating a new workload, which is a group of connected resources that you want to examine and optimize. Give your workload a name and select an AWS account and region for it to be hosted in.
 
 
+3. Answer the following questions: The tool will ask you a series of questions about the AWS Well-Architected Framework's five pillars: operational excellence, security, reliability, performance efficiency, and cost optimization. Based on your present architecture and aims, answer these questions to the best of your ability. Based on your present architecture and aims, answer these questions to the best of your ability.
 
-Examine the outcomes: The tool will provide you a summary of your
+4. Review the results: The tool will provide you with a summary of your workload's architecture and highlight areas that may require attention. It will also recommend best practices and provide resources to help you improve your architecture.
+
+5. Do the following steps: Apply the tool's recommendations to improve the architecture of your workload. The recommendations can be prioritized based on your organization's requirements and resources.
+
+6. Complete the following steps: Examine your workload on a regular basis to ensure that it remains compliant with best practices and that any new issues or modifications are addressed.
+
+Overall, the AWS Well-Architected Tool is a useful tool for improving your cloud architecture and ensuring that it adheres to industry best practices.

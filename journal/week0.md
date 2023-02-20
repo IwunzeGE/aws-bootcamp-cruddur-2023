@@ -49,7 +49,8 @@ h. Set up alerts to be notified when your usage or costs exceed the budget amoun
 
 - Install the CLI via the terminal using this code
 
-```curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ```
@@ -62,7 +63,8 @@ Enter your Access Key ID and Secret Access Key, which can be found in your AWS M
 
 Enter the default region name and output format. The region is the geographical location of your AWS resources. You can find a list of available regions in the AWS documentation. The output format can be either "json", "text", or "table".
 
-```AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+```
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 Default region name [None]: us-west-2
 Default output format [None]: json
@@ -72,13 +74,66 @@ Default output format [None]: json
 
 ### Setting up Budgets via the CLI
 
-The budget will be created using this command but first you'll have to set up the budget.json and notification-with-subscribers.json file
-
+1. The budget will be created using this command but first you'll have to set up the budget.json and notification-with-subscribers.json file
 
 ```aws budgets create-budget \
     --account-id 111122223333 \
     --budget file://budget.json \
     --notifications-with-subscribers file://notifications-with-subscribers.json
+```
+- Create two files named budget.json and notification-with-subscribers.json and edit them with the below code respectively
+
+```
+{
+    "BudgetLimit": {
+        "Amount": "100",
+        "Unit": "USD"
+    },
+    "BudgetName": "Example Tag Budget",
+    "BudgetType": "COST",
+    "CostFilters": {
+        "TagKeyValue": [
+            "user:Key$value1",
+            "user:Key$value2"
+        ]
+    },
+    "CostTypes": {
+        "IncludeCredit": true,
+        "IncludeDiscount": true,
+        "IncludeOtherSubscription": true,
+        "IncludeRecurring": true,
+        "IncludeRefund": true,
+        "IncludeSubscription": true,
+        "IncludeSupport": true,
+        "IncludeTax": true,
+        "IncludeUpfront": true,
+        "UseBlended": false
+    },
+    "TimePeriod": {
+        "Start": 1477958399,
+        "End": 3706473600
+    },
+    "TimeUnit": "MONTHLY"
+}
+```
+
+```
+[
+    {
+        "Notification": {
+            "ComparisonOperator": "GREATER_THAN",
+            "NotificationType": "ACTUAL",
+            "Threshold": 80,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "Address": "example@example.com",
+                "SubscriptionType": "EMAIL"
+            }
+        ]
+    }
+]
 ```
 
 Press Enter to run the command. If successful, you should see the details of the newly created budget.

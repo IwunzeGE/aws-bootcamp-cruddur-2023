@@ -29,6 +29,11 @@ f. Set the budget amount and timeframe (e.g. monthly budget of $500 for the next
 g. Choose the resources you want to include in the budget (e.g. all resources in your AWS account, specific AWS services, specific tags, etc.)
 
 h. Set up alerts to be notified when your usage or costs exceed the budget amount.
+### Creating IAM USERS
+
+![IAM3](https://user-images.githubusercontent.com/110903886/220133151-615a91d2-2e3b-4d5d-9c8b-2d15efded12e.png)
+![IAM1](https://user-images.githubusercontent.com/110903886/220133158-977f247a-8153-4e5d-a444-e153f2d6ea1f.png)
+![IAM2](https://user-images.githubusercontent.com/110903886/220133163-daf3cc5e-1c3f-49bf-a9d8-53d03fa6e091.png)
 
 ### Setting up Budgets via the CLI
 

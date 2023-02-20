@@ -202,3 +202,17 @@ aws sns subscribe \
 ![Screenshot (54)](https://user-images.githubusercontent.com/110903886/220132525-461f7839-5f6c-4068-82c3-6bbbeb89bc96.png)
 
 [Link to the logical image](https://lucid.app/lucidchart/891abc20-19d0-4c08-ba22-22b47ebf0cb3/edit?viewport_loc=-586%2C-1278%2C3042%2C1364%2C0_0&invitationId=inv_be692115-abdc-4798-a5f1-0222a559edd6)
+
+
+## Architecture
+
+Sign in to the AWS Console: Log in to your Amazon Web Services account and go to the AWS Well-Architected Tool console.
+
+Build a new workload: In the Well-Architected Tool, you can begin by generating a new workload, which is a group of connected resources that you want to examine and optimize. Give your workload a name and select an AWS account and region for it to be hosted in.
+
+
+Answer the following questions: The tool will ask you a series of questions about the AWS Well-Architected Framework's five pillars: operational excellence, security, reliability, performance efficiency, and cost optimization. Based on your present architecture and aims, answer these questions to the best of your ability. Based on your present architecture and aims, answer these questions to the best of your ability.
+
+
+
+Examine the outcomes: The tool will provide you a summary of your

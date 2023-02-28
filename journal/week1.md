@@ -174,10 +174,13 @@ Push the image
 
 ## Running Docker on an EC2 Instance
 
-- Launch an EC2 instance
+- Launch an EC2 instance - Since I'm on Free tier, I'd be using a free tier supported AMI
+
+![new instance](https://user-images.githubusercontent.com/110903886/221769774-40811017-1ecf-4b8d-91ff-6f3a6b3d04f7.png)
+
 - Install the Docker Engine 
 
-Set up the repository
+**Set up the repository**
 
 1. Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
@@ -213,4 +216,14 @@ echo \
 
 `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
 
-- Pull an image from docker hub registry
+- Pull an image from docker hub registry and run the container
+
+`docker pull rockchip/aws_bootcamp2023:first-try`
+
+![ec2 1](https://user-images.githubusercontent.com/110903886/221769979-8cd95524-6c2a-44c1-adf0-12149ae99a72.png)
+
+Check if it runs on the Ec2 public IP
+
+![ec2](https://user-images.githubusercontent.com/110903886/221770082-818e4026-ee8a-43b7-8c35-8861a801668f.png)
+
+

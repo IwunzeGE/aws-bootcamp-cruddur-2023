@@ -164,7 +164,7 @@ Tag your image
 
 Push the image
 
-`docker pish rockchip/aws_bootcamp2023:first-try`
+`docker push rockchip/aws_bootcamp2023:first-try`
 
 **IMAGE IN THE DOCKER HUB**
 

@@ -137,10 +137,24 @@ You should get these responses
 
 
 
+## Getting an image to Docker Hub
 
+1. Log in on https://hub.docker.com/
+2. Click on Create Repository.
+3. Choose a name (e.g. verse_gapminder) and a description for your repository and click Create.
+4. Log into the Docker Hub from the command line
 
+`docker login`
 
+Just with your own user name that you used for the account. Enter your password when prompted. If everything worked you will get a message similar to
 
+WARNING: login credentials saved in /home/username/.docker/config.json
 
+Login Succeeded![docker login](https://user-images.githubusercontent.com/110903886/221750961-e94f8006-89ee-4010-b0bc-5460d0d53e7a.png)
 
+Check the image ID using
+
+`docker images`
+
+![docker images](https://user-images.githubusercontent.com/110903886/221751677-94d24066-b8b4-44e1-a180-5d5b54294823.png)
 

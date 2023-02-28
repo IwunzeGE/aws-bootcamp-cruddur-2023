@@ -227,3 +227,15 @@ Check if it runs on the Ec2 public IP
 ![ec2](https://user-images.githubusercontent.com/110903886/221770082-818e4026-ee8a-43b7-8c35-8861a801668f.png)
 
 
+## Creating the Backend & Front Notification Feature! - https://youtu.be/k-_o0cCpksk
+
+
+Add a new path to the openapi.yml file and edit as instructed in the video above
+
+[addnewpath](https://user-images.githubusercontent.com/110903886/221772201-f2d0e366-8824-4cec-9217-741ae92e4c3a.png)
+
+Edit the codes from app.py and create new file called notificattion_activities
+
+Test it out if it works
+
+![notiffication json](https://user-images.githubusercontent.com/110903886/221773350-64260f13-a518-4037-a4aa-cd4a4564c6db.png)

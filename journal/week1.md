@@ -158,3 +158,15 @@ Check the image ID using
 
 ![docker images](https://user-images.githubusercontent.com/110903886/221751677-94d24066-b8b4-44e1-a180-5d5b54294823.png)
 
+Tag your image
+
+`docker tag 90dcc3be0d43 rockchip/aws_bootcamp2023:first-try`
+
+Push the image
+
+`docker pish rockchip/aws_bootcamp2023:first-try`
+
+**IMAGE IN THE DOCKER HUB**
+
+![docker hub](https://user-images.githubusercontent.com/110903886/221753490-e8af0462-8975-4fe0-b6e8-e4f6ac035920.png)
+

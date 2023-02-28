@@ -170,3 +170,47 @@ Push the image
 
 ![docker hub](https://user-images.githubusercontent.com/110903886/221753490-e8af0462-8975-4fe0-b6e8-e4f6ac035920.png)
 
+
+
+## Running Docker on an EC2 Instance
+
+- Launch an EC2 instance
+- Install the Docker Engine 
+
+Set up the repository
+
+1. Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+
+```
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+````
+
+2. Add Docker’s official GPG key:
+
+```
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+3. Use the following command to set up the repository:
+
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+4. Update the apt package index:
+
+`sudo apt-get update`
+
+5. Install Docker Engine, containerd, and Docker Compose.
+
+`sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+
+- Pull an image from docker hub registry

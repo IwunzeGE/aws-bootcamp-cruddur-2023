@@ -232,7 +232,7 @@ Check if it runs on the Ec2 public IP
 
 Add a new path to the openapi.yml file and edit as instructed in the video above
 
-[addnewpath](https://user-images.githubusercontent.com/110903886/221772201-f2d0e366-8824-4cec-9217-741ae92e4c3a.png)
+![addnewpath](https://user-images.githubusercontent.com/110903886/222161837-893bb90c-b8e0-4db6-8764-cb3d1723d00b.png)
 
 ```
   /api/activities/notifications:
@@ -286,7 +286,7 @@ class NotificationsActivities:
   ```
 
 
-Edit the codes from app.py and c
+Edit the codes from app.py and 
 Test it out if it works
 
 ![notiffication json](https://user-images.githubusercontent.com/110903886/221773350-64260f13-a518-4037-a4aa-cd4a4564c6db.png)

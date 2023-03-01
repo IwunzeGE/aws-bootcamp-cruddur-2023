@@ -227,15 +227,66 @@ Check if it runs on the Ec2 public IP
 ![ec2](https://user-images.githubusercontent.com/110903886/221770082-818e4026-ee8a-43b7-8c35-8861a801668f.png)
 
 
-## Creating the Backend & Front Notification Feature! - https://youtu.be/k-_o0cCpksk
+## Creating the Backend & Front Notification Feature! - [https://youtu.be/k-_o0cCpksk]
 
 
 Add a new path to the openapi.yml file and edit as instructed in the video above
 
 [addnewpath](https://user-images.githubusercontent.com/110903886/221772201-f2d0e366-8824-4cec-9217-741ae92e4c3a.png)
 
-Edit the codes from app.py and create new file called notificattion_activities
+```
+  /api/activities/notifications:
+    get:
+      description: 'Return a feed of activity for all the people i follow'
+      tags:
+        - activities
+        
+      parameters: []
+      responses:
+        '200':
+          description: Returns an array of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+  ```
 
+Create new file called notificattion_activities in the backend-flask/services dir
+
+```
+from datetime import datetime, timedelta, timezone
+class NotificationsActivities:
+  def run():
+    now = datetime.now(timezone.utc).astimezone()
+    results = [{
+      'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+      'handle':  'Guess it worked',
+      'message': 'I am a DevOps Engineer',
+      'created_at': (now - timedelta(days=2)).isoformat(),
+      'expires_at': (now + timedelta(days=5)).isoformat(),
+      'likes_count': 5,
+      'replies_count': 1,
+      'reposts_count': 0,
+      'replies': [{
+        'uuid': '26e12864-1c26-5c3a-9658-97a10f8fea67',
+        'reply_to_activity_uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+        'handle':  'Worf',
+        'message': 'This post has no honor!',
+        'likes_count': 0,
+        'replies_count': 0,
+        'reposts_count': 0,
+        'created_at': (now - timedelta(days=2)).isoformat()
+      }],
+    },
+   
+    ]
+    return results
+  ```
+
+
+Edit the codes from app.py and c
 Test it out if it works
 
 ![notiffication json](https://user-images.githubusercontent.com/110903886/221773350-64260f13-a518-4037-a4aa-cd4a4564c6db.png)

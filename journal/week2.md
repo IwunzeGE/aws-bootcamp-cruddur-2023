@@ -148,3 +148,44 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 
 ![sampling rule](https://user-images.githubusercontent.com/110903886/222570615-ef67b475-d957-4ffe-baee-b80f8a17e12f.png)
 
+
+[Install X-ray Daemon](https://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html)
+
+[Github aws-xray-daemon](https://github.com/aws/aws-xray-daemon)
+
+[X-Ray Docker Compose example](https://github.com/marjamis/xray/blob/master/docker-compose.yml)
+
+
+```
+wget https://s3.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.x.deb
+sudo dpkg -i **.deb
+```
+
+### Add Deamon Service to Docker Compose file
+
+```
+  xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "us-east-1"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+```
+
+- Add these two env vars to our backend-flask in our docker-compose.yml file
+
+```
+AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
+```
+
+- Check service data for last 10 minutes
+
+```
+EPOCH=$(date +%s)
+aws xray get-service-graph --start-time $(($EPOCH-600)) --end-time $EPOCH
+```

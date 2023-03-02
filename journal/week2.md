@@ -125,10 +125,26 @@ XRayMiddleware(app, xray_recorder)
 }
 ```
 
+- Create an Xray group
+
 ```
 FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
 aws xray create-group \
    --group-name "Cruddur" \
-   --filter-expression "service(\"$FLASK_ADDRESS\") {fault OR error}"
+   --filter-expression "service(\"backend-flask\")"
+```
+
+![create xray group](https://user-images.githubusercontent.com/110903886/222570339-58b70e6a-655f-4f72-82cd-8634ce35aa71.png)
+
+![create xray group 2](https://user-images.githubusercontent.com/110903886/222570542-75343417-664b-42ed-81a0-e2ba049c5f06.png)
+
+- Create a sampling rule
+
+```
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
+
+![sampling rule 0](https://user-images.githubusercontent.com/110903886/222570957-e4873744-1d82-4d40-b24a-1329e54e0078.png)
+
+![sampling rule](https://user-images.githubusercontent.com/110903886/222570615-ef67b475-d957-4ffe-baee-b80f8a17e12f.png)
+

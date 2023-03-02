@@ -183,6 +183,10 @@ AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
 AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
 
+- Run the `docker compose up` and see if we get data
+
+![xray trace](https://user-images.githubusercontent.com/110903886/222581718-0eaf7b5b-0b39-4857-a114-e9baa8931a01.png)
+
 - Check service data for last 10 minutes
 
 ```

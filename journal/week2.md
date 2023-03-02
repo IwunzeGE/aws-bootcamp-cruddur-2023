@@ -65,3 +65,10 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
 
+- Docker compose up and hit some api endpoint on the backend 
+
+- Check your honecomb datasets to see if there is data
+
+![honeycomb data](https://user-images.githubusercontent.com/110903886/222351330-39aa902b-ea00-4a10-9768-fe942ec4d237.png)
+
+

@@ -71,4 +71,7 @@ RequestsInstrumentor().instrument()
 
 ![honeycomb data](https://user-images.githubusercontent.com/110903886/222351330-39aa902b-ea00-4a10-9768-fe942ec4d237.png)
 
+- We could run a trace for each api call recorded and see more details
+
+![trace api](https://user-images.githubusercontent.com/110903886/222353091-ddda215f-3cac-4903-b389-24274cf03ff7.png)
 

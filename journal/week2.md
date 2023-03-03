@@ -193,3 +193,62 @@ AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 EPOCH=$(date +%s)
 aws xray get-service-graph --start-time $(($EPOCH-600)) --end-time $EPOCH
 ```
+
+## CloudWatch Logs
+
+- Add to the requirements.txt
+
+`watchtower`
+- Intsall dependencies
+
+`pip install -r requirements.txt`
+
+- In app.py
+
+```
+import watchtower
+import logging
+from time import strftime
+```
+
+```
+# Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("some message")
+```
+
+```
+@app.after_request
+def after_request(response):
+    timestamp = strftime('[%Y-%b-%d %H:%M]')
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    return response
+```
+
+- We'll log something in an API endpoint
+
+`LOGGER.info('test logs')`
+
+- Set the `env var` in your `backend-flask` for `docker-compose.yml`
+```
+AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
+AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+```
+
+**Note: passing AWS_REGION doesn't seems to get picked up by boto3 so pass default region instead**
+
+- Run `docker compose up`
+
+- Hit the API endpoint a couple of times and check Cloudwatch logs for streamed data
+
+![log stream data1](https://user-images.githubusercontent.com/110903886/222733352-bebfaefb-6b1a-4b7d-ba30-5277a07710ce.png)
+
+![log stream data2](https://user-images.githubusercontent.com/110903886/222733493-30591ae3-8c5e-4ff3-826d-cbbcb9728e26.png)
+
+

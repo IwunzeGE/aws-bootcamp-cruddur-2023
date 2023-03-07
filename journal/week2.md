@@ -258,6 +258,8 @@ AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
 
 - Create a new project in Rollbar called Cruddur
 
+![rollbar reg](https://user-images.githubusercontent.com/110903886/223485946-00bd02b0-b9f3-406a-8d1a-e064458b546e.png)
+
 - Add to requirements.txt
 
 ```
@@ -316,4 +318,11 @@ def rollbar_test():
     return "Hello World!"
 ````
 
-Rollbar Flask Exampl
+Rollbar Flask Example for an endpoint and error
+
+![roll1](https://user-images.githubusercontent.com/110903886/223485713-81724538-fe1b-4841-a3e9-638f1665810c.png)
+
+
+![roll](https://user-images.githubusercontent.com/110903886/223485808-c630e52e-544c-449f-a578-13c99833b82d.png)
+
+![roll2](https://user-images.githubusercontent.com/110903886/223485844-41ea3c55-d835-4713-b84c-eeb3e95d4602.png)

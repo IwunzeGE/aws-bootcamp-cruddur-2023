@@ -1,6 +1,6 @@
 # Week 3 — Decentralized Authentication
 
-## Cognito
+## Set-up Cognito
 - Log in as IAM User on the console
 - Configure the AWS CLI credentials
 - From the console launch 'Cognito' and create a user pool
@@ -20,3 +20,6 @@ Step 5 works around integrating your application
 Review and create the pool at Step 6
 
 ![cognito3](https://user-images.githubusercontent.com/110903886/223534566-d0a2107b-6554-4f74-9532-1efd6e7c5a4f.png)
+
+## Install AWS Amplify
+`npm i aws-amplify --save`

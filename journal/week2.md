@@ -269,15 +269,20 @@ rollbar
 
 `pip install -r requirements.txt`
 
-- We need to set our access token
+- Set your access token
 
+```
 export ROLLBAR_ACCESS_TOKEN=""
 gp env ROLLBAR_ACCESS_TOKEN=""
-Add to backend-flask for docker-compose.yml
+```
 
-ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
-Import for Rollbar
+- Add to backend-flask for docker-compose.yml
 
+`ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"`
+
+- Import for Rollbar
+
+```
 import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
@@ -298,9 +303,13 @@ def init_rollbar():
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 We'll add an endpoint just for testing rollbar to app.py
+```
 
+```
 @app.route('/rollbar/test')
 def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
-Rollbar Flask Example
+````
+
+Rollbar Flask Exampl

@@ -188,7 +188,7 @@ const onsubmit = async (event) => {
 I received an email alert upon creating the user
 ![email alert](https://user-images.githubusercontent.com/110903886/223865850-1da81fb4-7f3e-4638-b4f0-187c4db18edb.png)
 
-- If login fails and gives the below error, Then we might need to force the password rester via the CLI. This is because user confirmation wasn't allowed from the console.
+- If login fails and gives the below error, Then we might need to force the password reset via the CLI. This is because user confirmation wasn't allowed from the console.
 
 ![user login cannot read properties error](https://user-images.githubusercontent.com/110903886/223866654-7884243d-9a9b-4aa7-badf-c851a3e8f829.png)
 
@@ -199,10 +199,9 @@ From the CLI,
 - Upon sign in, it was successful
 ![Login success but no attributes](https://user-images.githubusercontent.com/110903886/223866122-d35b2704-49fe-4091-a2bc-027df03a88b0.png)
 
+- From the AWS console, edit the `User Atrributes`
 
-
-
-
+![user attributes](https://user-images.githubusercontent.com/110903886/223868008-61696747-56fe-45ae-be73-8b09c970efe5.png)
 
 
 

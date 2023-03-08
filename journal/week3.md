@@ -203,6 +203,9 @@ From the CLI,
 
 ![user attributes](https://user-images.githubusercontent.com/110903886/223868008-61696747-56fe-45ae-be73-8b09c970efe5.png)
 
+- Refresh the frontend page to see if it worked
+
+![Login success with attributes](https://user-images.githubusercontent.com/110903886/223869518-d8d5d4d8-7e83-4a59-8425-fea2f1bd747b.png)
 
 
 

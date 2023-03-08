@@ -101,6 +101,7 @@ React.useEffect(()=>{
 ```
 import { Auth } from 'aws-amplify';
 
+
 const signOut = async () => {
   try {
       await Auth.signOut({ global: true });
@@ -116,7 +117,9 @@ const signOut = async () => {
 ```
 import { Auth } from 'aws-amplify';
 
+
 const [cognitoErrors, setCognitoErrors] = React.useState('');
+
 
 const onsubmit = async (event) => {
   setCognitoErrors('')
@@ -137,12 +140,117 @@ const onsubmit = async (event) => {
   return false
 }
 
+
 let errors;
 if (cognitoErrors){
   errors = <div className='errors'>{cognitoErrors}</div>;
 }
 
 // just before submit component
+{errors}
+```
+- Check if it works by signing in with a random credential. You should get this
+
+![check0](https://user-images.githubusercontent.com/110903886/223864963-efdca9a2-1955-4e27-8e00-5ee7ea7fe185.png)
+
+- We'd want the error message to display in our webapp not just the inspect console. So tweak the code in `Signin.js`
+
+Replace that part of the code with this
+
+```
+const onsubmit = async (event) => {
+    setErrors('')
+    console.log()
+    event.preventDefault();
+      Auth.signIn(email, password)
+        .then(user => {
+          localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+          window.location.href = "/"
+        })
+        .catch(error => { 
+      if (error.code == 'UserNotConfirmedException') {
+        window.location.href = "/confirm"
+      }
+      setErrors(error.message)
+    });
+    return false
+  }
+```
+
+- Now lets check,
+
+![fixed signin error](https://user-images.githubusercontent.com/110903886/223865623-8219b412-d7c4-44ca-a3b1-5ecc57c19fb2.png)
+
+- Create a user in the cognito user pool form the console and try using the credentials to login
+
+![create user](https://user-images.githubusercontent.com/110903886/223865830-9a00a62c-6b78-4b3e-bc5a-b3db3723932e.png)
+
+I received an email alert upon creating the user
+![email alert](https://user-images.githubusercontent.com/110903886/223865850-1da81fb4-7f3e-4638-b4f0-187c4db18edb.png)
+
+- If login fails and gives the below error, Then we might need to force the password rester via the CLI. This is because user confirmation wasn't allowed from the console.
+
+![user login cannot read properties error](https://user-images.githubusercontent.com/110903886/223866654-7884243d-9a9b-4aa7-badf-c851a3e8f829.png)
+
+From the CLI,
+
+`aws cognito-idp admin-set-user-password --username iwunzege --password Password!! --user-pool-id us-east-1_wy78euiKi --permanent`
+
+- Upon sign in, it was successful
+![Login success but no attributes](https://user-images.githubusercontent.com/110903886/223866122-d35b2704-49fe-4091-a2bc-027df03a88b0.png)
+
+
+
+
+
+
+
+
+
+
+
+
+- Update the Signup Page
+
+```
+import { Auth } from 'aws-amplify';
+
+
+const [cognitoErrors, setCognitoErrors] = React.useState('');
+
+
+const onsubmit = async (event) => {
+  event.preventDefault();
+  setCognitoErrors('')
+  try {
+      const { user } = await Auth.signUp({
+        username: email,
+        password: password,
+        attributes: {
+            name: name,
+            email: email,
+            preferred_username: username,
+        },
+        autoSignIn: { // optional - enables auto sign in after user is confirmed
+            enabled: true,
+        }
+      });
+      console.log(user);
+      window.location.href = `/confirm?email=${email}`
+  } catch (error) {
+      console.log(error);
+      setCognitoErrors(error.message)
+  }
+  return false
+}
+
+
+let errors;
+if (cognitoErrors){
+  errors = <div className='errors'>{cognitoErrors}</div>;
+}
+
+//before submit component
 {errors}
 ```
 

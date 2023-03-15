@@ -22,10 +22,12 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
+from lib.cognito_jwt_verification import CognitoTokenVerification
 # Rollbar
 import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
+
 
 #Xray
 #from aws_xray_sdk.core import xray_recorder
@@ -62,6 +64,10 @@ tracer = trace.get_tracer(__name__)
 app = Flask(__name__)
 #Xray
 #XRayMiddleware(app, xray_recorder)
+cognito_jwt_verification = CognitoTokenVerification
+  user_pool_id:,
+  user_pool_client_id:,
+  region:,
 
 #Honeycomb - Initialize automatic instrumentation with Flask
 FlaskInstrumentor().instrument_app(app)
@@ -74,8 +80,8 @@ origins = [frontend, backend]
 cors = CORS(
   app, 
   resources={r"/api/*": {"origins": origins}},
-  expose_headers="location,link",
-  allow_headers="content-type,if-modified-since",
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
   methods="OPTIONS,GET,HEAD,POST"
 )
 
@@ -143,11 +149,12 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
+@aws_auth.authentication_required
 def data_home():
-  print('AUTH HEADER----')
-  print(
-    request.headers.get('Authorization')
-  )
+  # app.logger.debug("AUTH HEADER")
+  # app.logger.debug(
+  #   request.headers.get('Authorization')
+  # )
  #data = HomeActivities.run(Logger=LOGGER) 
   data = HomeActivities.run()
   return data, 200

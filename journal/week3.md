@@ -256,3 +256,18 @@ if (cognitoErrors){
 {errors}
 ```
 
+## Configuring the Backend
+
+- Add `Flask-AWSCognito` to the `requirements.txt` in the backend and install it using pip.
+
+- Change the CORS part of the code in the `app.py` file
+```
+cors = CORS(
+  app, 
+  resources={r"/api/*": {"origins": origins}},
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
+  methods="OPTIONS,GET,HEAD,POST"
+)
+```
+

@@ -272,7 +272,7 @@ cors = CORS(
 )
 ```
 
-- Create a file named `cognito_jwt_token.py` and paste the codes below
+- Create a folder named `lib` and create a file named `cognito_jwt_token.py` inside. Then paste the codes below
 
 ```
 import time

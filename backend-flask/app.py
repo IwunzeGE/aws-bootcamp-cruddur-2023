@@ -22,7 +22,8 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
-from lib.cognito_jwt_token import CognitoJwtToken
+
+from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # Rollbar
 import rollbar
@@ -151,7 +152,6 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
-@aws_auth.authentication_required
 def data_home():
   access_token = extract_access_token(request.headers)
   try:

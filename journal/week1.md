@@ -164,7 +164,7 @@ volumes:
     driver: local
 ```
 
-- Install the postgres client into Gitpod
+- Install the postgres client into Gitpod in the `gitpod.yml` file.
 
 ```
   - name: postgres

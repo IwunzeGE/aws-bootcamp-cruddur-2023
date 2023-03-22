@@ -430,3 +430,6 @@ def data_home():
   return data, 200
 ```
 
+- Edit the `home_activities.py` file with the below code
+
+

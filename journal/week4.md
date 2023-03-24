@@ -31,7 +31,7 @@ Although we'd be launching the RDS instance from the CLI, Lets take a walk on ho
 ![rds6](https://user-images.githubusercontent.com/110903886/227607602-e7338550-030a-429d-803c-fe40060445a6.png)
  
 
-Now, lets provisioning an RDS instance with db named 'cruddur' from the CLI using the code below.
+Now, lets provisioning an RDS instance with db named 'cruddur' from the CLI by running the code below.
 
 ```
 aws rds create-db-instance \
@@ -53,6 +53,10 @@ aws rds create-db-instance \
   --enable-performance-insights \
   --performance-insights-retention-period 7 \
   --no-deletion-protection
-  ```
-  
-  
+```
+![cli code](https://user-images.githubusercontent.com/110903886/227614009-b1b3b1ef-3544-46f8-b133-8d28324fb514.png)
+
+- Confirm from the console to see if it worked.
+
+![cli code check](https://user-images.githubusercontent.com/110903886/227614048-f8024b3f-98b3-42f0-8f97-7b6a98c2abb3.png)
+

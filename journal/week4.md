@@ -26,14 +26,12 @@ Although we'd be launching the RDS instance from the CLI, Lets take a walk on ho
 
 ![rds5](https://user-images.githubusercontent.com/110903886/227607338-28b071c5-1866-4ae1-ba12-1ed157402544.png)
 
-- It is important to enable automated backups in production.
+- It is important to enable automated backups in production and enable deletion protection
 
 ![rds6](https://user-images.githubusercontent.com/110903886/227607602-e7338550-030a-429d-803c-fe40060445a6.png)
-
-- Enable deletion protection
  
 
-We'd start off by provisioning an RDS instance with db named 'cruddur' from the CLI using the code
+Now, lets provisioning an RDS instance with db named 'cruddur' from the CLI using the code below.
 
 ```
 aws rds create-db-instance \

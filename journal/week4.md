@@ -152,3 +152,24 @@ psql $NO_DB_CONNECTION_URL -c "CREATE DATABASE cruddur;"
 ```
 
 ![db-create](https://user-images.githubusercontent.com/110903886/227661022-f0385b1a-f853-4ae3-bca9-f4194e07fa37.png)
+
+- Edit the `db-schema-load`
+
+```
+#! /usr/bin/bash
+
+schema_path="$(realpath .)/db/schema.sql"
+
+echo $schema_path
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL cruddur < $schema_path
+```
+
+![db-schema](https://user-images.githubusercontent.com/110903886/227662499-28f30d54-d143-49aa-a2bc-505c1f04931e.png)
+
+
+
+
+
+

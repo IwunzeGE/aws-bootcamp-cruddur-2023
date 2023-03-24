@@ -116,10 +116,23 @@ Try connecting using `psql $CONNECTION_URL`
 ![connectionurl](https://user-images.githubusercontent.com/110903886/227625339-e172ca14-0636-43c1-96b6-41dcc2800ebd.png)
 
 
+In the `backend-flask`, create a folder named `bin` with three files in it 	`db-create`, `db-drop` and `db-schema-load`
+
+![create bin](https://user-images.githubusercontent.com/110903886/227659460-126c2995-14fa-40c9-9143-7339473652d4.png)
+
+- Change the permissions of the files and make them executable.
+
+![chmod for bin](https://user-images.githubusercontent.com/110903886/227659459-524b6571-386f-428a-a1f1-5151dca8a4e7.png)
 
 
+- Edit the `db-drop`
 
+```
+#! usr/bin/bash
 
+psql $CONNECTION_URL -c "DROP  DATABASE cruddur;"
+```
 
+- Run it using `./bin/db-drop`
 
 

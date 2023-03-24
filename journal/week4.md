@@ -87,22 +87,26 @@ UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition; -
 DELETE FROM table_name WHERE condition; -- Delete data from a table
 ```
 
+- Create a database named `cruddur`
+
+![create db](https://user-images.githubusercontent.com/110903886/227622173-7d2d4604-fc85-45ad-b816-03b86f090234.png)
+
 ### Import Script
 
 We'll create a new SQL file called `schema.sql` and we'll place it in `backend-flask/db`
 
-The command to import:
-
-`psql cruddur < db/schema.sql -h localhost -U postgres`
-
-### Add UUID Extension
-
-We are going to have Postgres generate out UUIDs. We'll need to use an extension called:
+Paste the code into the file whcih will add UUID extension. We are going to have Postgres generate out UUIDs. We'll need to use an extension called:
 
 ```
-CREATE EXTENSION "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ```
+
+The command to import:
+
+`psql cruddur < backend-flask/db/schema.sql -h localhost -U postgres`
+
+![create extension](https://user-images.githubusercontent.com/110903886/227621858-52492388-b7a2-43ea-a8fc-9d302f321681.png)
+
 
 
 

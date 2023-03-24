@@ -60,3 +60,20 @@ aws rds create-db-instance \
 
 ![cli code check](https://user-images.githubusercontent.com/110903886/227614048-f8024b3f-98b3-42f0-8f97-7b6a98c2abb3.png)
 
+Access the postgres client to see if it works
+
+![login postgres](https://user-images.githubusercontent.com/110903886/227617142-5c051ef5-66e9-4f22-bfa3-bcf6a9e213c7.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

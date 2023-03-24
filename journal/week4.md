@@ -89,7 +89,7 @@ DELETE FROM table_name WHERE condition; -- Delete data from a table
 
 ### Import Script
 
-We'll create a new SQL file called `schema.sql` and we'll place it in backend-flask/db
+We'll create a new SQL file called `schema.sql` and we'll place it in `backend-flask/db`
 
 The command to import:
 

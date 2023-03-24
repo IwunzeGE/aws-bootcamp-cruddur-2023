@@ -128,11 +128,27 @@ In the `backend-flask`, create a folder named `bin` with three files in it 	`db-
 - Edit the `db-drop`
 
 ```
-#! usr/bin/bash
+#! /usr/bin/bash
 
-psql $CONNECTION_URL -c "DROP  DATABASE cruddur;"
+echo db-drop
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "DROP  DATABASE cruddur;"
 ```
 
 - Run it using `./bin/db-drop`
 
+![db-drop](https://user-images.githubusercontent.com/110903886/227660780-2979765f-84dc-426c-8409-4e2bc41d7be5.png)
 
+- Edit the `db-create`
+
+```
+#! /usr/bin/bash
+
+echo db-create
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "CREATE DATABASE cruddur;"
+```
+
+![db-create](https://user-images.githubusercontent.com/110903886/227661022-f0385b1a-f853-4ae3-bca9-f4194e07fa37.png)

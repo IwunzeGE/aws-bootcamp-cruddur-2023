@@ -252,7 +252,7 @@ CREATE TABLE public.activities (
 ![tablesssss](https://user-images.githubusercontent.com/110903886/227934785-84faa1a6-1175-40b5-ad36-1f76b6e49241.png)
 
 
-- Create a `db-connect` file in the `backend-flask` dir, make it executable and paste the code below
+- Create a `bin/db-connect` file in the `backend-flask` dir, make it executable and paste the code below
 
 ```
 #! /usr/bin/bash
@@ -262,6 +262,47 @@ psql $CONNECTION_URL
 ![db-connect](https://user-images.githubusercontent.com/110903886/227934839-2696d97b-1931-4cf8-9277-10641fb924f3.png)
 
 
+- Create a `bin/db-seed`, make it executable  and `db/seed.sql` file in the `backend-flask` dir, and paste the code below respectively
+
+```
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-seed"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+seed_path="$(realpath .)/db/seed.sql"
+
+echo $seed_path
+
+if [ "$1" = "prod" ]; then
+  echo "Running using production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $seed_path
+```
+
+```
+-- this file was manually created
+INSERT INTO public.users (display_name, handle, cognito_user_id)
+VALUES
+  ('Andrew Brown', 'andrewbrown' ,'MOCK'),
+  ('Iwunze Godspower', 'ekiwunze' ,'MOCK');
+
+INSERT INTO public.activities (user_uuid, message, expires_at)
+VALUES
+  (
+    (SELECT uuid from public.users WHERE users.handle = 'andrewbrown' LIMIT 1),
+    'This was imported as seed data!',
+    current_timestamp + interval '10 day'
+  )
+```
+
+![dbseed](https://user-images.githubusercontent.com/110903886/227949967-7b68801d-e278-41b4-90c6-f6da5db51059.png)
 
 
 

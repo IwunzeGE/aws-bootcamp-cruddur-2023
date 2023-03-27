@@ -169,7 +169,52 @@ psql $NO_DB_CONNECTION_URL cruddur < $schema_path
 ![db-schema](https://user-images.githubusercontent.com/110903886/227662499-28f30d54-d143-49aa-a2bc-505c1f04931e.png)
 
 
+- Run in production mode, replace the `db-schema-load` with the code below
 
+```
+#! /usr/bin/bash
+
+schema_path="$(realpath .)/db/schema.sql"
+
+echo $schema_path
+
+if [ "$1" = "prod" ]; then
+  echo "Running using production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $schema_path
+```
+
+![load prod](https://user-images.githubusercontent.com/110903886/227928667-2f24b898-af39-4f0d-b1f3-9daa9397bbae.png)
+
+
+- Add colouring to the bash code in `db-schema-load` to make prints nicer. The new code becomes
+
+```
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-schema-load"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+schema_path="$(realpath .)/db/schema.sql"
+
+echo $schema_path
+
+if [ "$1" = "prod" ]; then
+  echo "Running using production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $schema_path
+```
+![color](https://user-images.githubusercontent.com/110903886/227928590-aa8f0e4e-975a-440d-a7fd-d58f2973eabb.png)
 
 
 

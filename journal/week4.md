@@ -95,7 +95,7 @@ DELETE FROM table_name WHERE condition; -- Delete data from a table
 
 We'll create a new SQL file called `schema.sql` and we'll place it in `backend-flask/db`
 
-Paste the below code into `svhema.sql`. This ia aimed at adding UUID extension. We are going to have Postgres generate out UUIDs. We'll need to use an extension called:
+Paste the below code into `schema.sql`. This ia aimed at adding UUID extension. We are going to have Postgres generate out UUIDs. We'll need to use an extension called:
 
 ```
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

@@ -220,6 +220,7 @@ psql $URL cruddur < $schema_path
 [Documentation on creating tables](https://www.postgresql.org/docs/current/sql-createtable.html)
 
 In the `schema.sql` file, paste the below code. This will first delete any similar existing table and proceed to creating new tables.
+
 ```
 DROP TABLE IF EXISTS public.users;
 DROP TABLE IF EXISTS public.activities;
@@ -245,4 +246,33 @@ CREATE TABLE public.activities (
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
 ```
+![create table](https://user-images.githubusercontent.com/110903886/227932318-bfed3506-ac55-48df-9b8d-d7bc69536fc7.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

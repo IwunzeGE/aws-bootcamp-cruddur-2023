@@ -301,7 +301,7 @@ VALUES
     current_timestamp + interval '10 day'
   )
 ```
-
+ 
 ![dbseed](https://user-images.githubusercontent.com/110903886/227949967-7b68801d-e278-41b4-90c6-f6da5db51059.png)
 
 

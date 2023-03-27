@@ -305,8 +305,27 @@ VALUES
 ![dbseed](https://user-images.githubusercontent.com/110903886/227949967-7b68801d-e278-41b4-90c6-f6da5db51059.png)
 
 
+## See what connections we are using
+- Create a file `/bin/db-sessions` and paste the code below
 
+```
+#! /usr/bin/bash
 
+#echo "== db-sessions"
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-sessions"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
+       usename as user,  \
+       datname as db, \
+       client_addr, \
+       application_name as app,\
+       state \
+from pg_stat_activity;"
+```
 
 
 

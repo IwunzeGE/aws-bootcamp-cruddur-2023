@@ -327,6 +327,7 @@ psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
 from pg_stat_activity;"
 ```
 
+![db-sessions](https://user-images.githubusercontent.com/110903886/227956978-8c4089d7-fb19-41d3-a7e3-a0efa9d9b379.png)
 
 
 

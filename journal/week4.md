@@ -219,7 +219,12 @@ psql $URL cruddur < $schema_path
 ## Create our tables
 [Documentation on creating tables](https://www.postgresql.org/docs/current/sql-createtable.html)
 
+In the `schema.sql` file, paste the below code. This will first delete any similar existing table and proceed to creating new tables.
 ```
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+
+
 CREATE TABLE public.users (
   uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   display_name text,
@@ -227,8 +232,8 @@ CREATE TABLE public.users (
   cognito_user_id text,
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
-```
-```
+
+
 CREATE TABLE public.activities (
   uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   message text NOT NULL,
@@ -240,6 +245,4 @@ CREATE TABLE public.activities (
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
 ```
-DROP TABLE IF EXISTS public.users;
-DROP TABLE IF EXISTS public.activities;
 

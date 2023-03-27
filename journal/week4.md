@@ -246,8 +246,20 @@ CREATE TABLE public.activities (
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
 ```
+
 ![create table](https://user-images.githubusercontent.com/110903886/227932318-bfed3506-ac55-48df-9b8d-d7bc69536fc7.png)
 
+![tablesssss](https://user-images.githubusercontent.com/110903886/227934785-84faa1a6-1175-40b5-ad36-1f76b6e49241.png)
+
+
+- Create a db-connect` file in the `backend-flask` dir, make it executable and paste the code below
+
+```
+#! /usr/bin/bash
+
+psql $CONNECTION_URL
+```
+![db-connect](https://user-images.githubusercontent.com/110903886/227934839-2696d97b-1931-4cf8-9277-10641fb924f3.png)
 
 
 

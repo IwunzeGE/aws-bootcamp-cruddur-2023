@@ -252,7 +252,7 @@ CREATE TABLE public.activities (
 ![tablesssss](https://user-images.githubusercontent.com/110903886/227934785-84faa1a6-1175-40b5-ad36-1f76b6e49241.png)
 
 
-- Create a db-connect` file in the `backend-flask` dir, make it executable and paste the code below
+- Create a `db-connect` file in the `backend-flask` dir, make it executable and paste the code below
 
 ```
 #! /usr/bin/bash

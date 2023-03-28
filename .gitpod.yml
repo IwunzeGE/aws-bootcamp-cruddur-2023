@@ -37,4 +37,7 @@ ports:
   - name: xray-daemon
     port: 2000
     visibility: public
-      
+  - name: db
+    port: 5432
+    onOpen: open-browser
+    visibility: public

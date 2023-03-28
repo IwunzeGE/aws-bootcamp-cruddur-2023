@@ -330,6 +330,45 @@ from pg_stat_activity;"
 ![db-sessions](https://user-images.githubusercontent.com/110903886/227956978-8c4089d7-fb19-41d3-a7e3-a0efa9d9b379.png)
 
 
+- Create a `/bin/db-setup` file that runs the other bin files to give flexibility and help make it easier to maintain.
+
+![db-setup](https://user-images.githubusercontent.com/110903886/228345451-6a7c99d2-68d5-4e1f-8626-f6ad0324e403.png)
+
+
+- Let's install the postgres driver. We'll add the following to our `requirments.txt` and install it
+
+```
+psycopg[binary]
+psycopg[pool]
+```
+
+`pip install -r requirements.txt`
+
+- Create a file `db.py` in the `lib` dir and add the following code
+
+```
+from psycopg_pool import ConnectionPool
+import os
+
+def query_wrap_object(template):
+  sql = f"""
+  (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+  {template}
+  ) object_row);
+  """
+  return sql
+
+def query_wrap_array(template):
+  sql = f"""
+  (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+  {template}
+  ) array_row);
+  """
+  return sql
+
+connection_url = os.getenv("CONNECTION_URL")
+pool = ConnectionPool(connection_url)
+```
 
 
 

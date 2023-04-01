@@ -6,3 +6,12 @@ LABEL="db-connect"
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 psql $CONNECTION_URL
+
+if [ "$1" = "prod" ]; then
+  echo "Running using production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL

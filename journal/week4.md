@@ -502,17 +502,10 @@ aws ec2 modify-security-group-rules \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
 ```
 
-- Update the gitpod.yml so that it runs everytime a new workspace is launched
+- Update the gitpod.yml so that it runs everytime a new workspace is launched. ADD a command step for postgres
 
 ```
-  - name: postgres
-    init: |
-      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
-      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-      sudo apt update
-      sudo apt install -y postgresql-client-13 libpq-dev
-
-    command: |
+     command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/rds-update-sg-rule"
 ```
@@ -526,7 +519,50 @@ aws ec2 modify-security-group-rules \
 
 ![rds schema load](https://user-images.githubusercontent.com/110903886/229313278-f35a56c7-b201-4ab5-9a39-2d4be797c0f2.png)
 
+## Setup Cognito post confirmation lambda
 
+### Create the handler function
+-bCreate lambda in same vpc as rds instance Python 3.8
+- Add a layer for psycopg2 with one of the below methods for development or production
 
+### ENV variables needed for the lambda environment.
+
+```
+PG_HOSTNAME='cruddur-db-instance.czz1cuvepklc.ca-central-1.rds.amazonaws.com'
+PG_DATABASE='cruddur'
+PG_USERNAME='root'
+PG_PASSWORD='huEE33z2Qvl383'
+```
+
+The function
+
+```
+import json
+import psycopg2
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+    try:
+        conn = psycopg2.connect(
+            host=(os.getenv('PG_HOSTNAME')),
+            database=(os.getenv('PG_DATABASE')),
+            user=(os.getenv('PG_USERNAME')),
+            password=(os.getenv('PG_SECRET'))
+        )
+        cur = conn.cursor()
+        cur.execute("INSERT INTO users (display_name, handle, cognito_user_id) VALUES(%s, %s, %s)", (user['name'], user['email'], user['sub']))
+        conn.commit() 
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        
+    finally:
+        if conn is not None:
+            cur.close()
+            conn.close()
+            print('Database connection closed.')
+
+    return event
+```
 
 

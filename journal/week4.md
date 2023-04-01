@@ -483,9 +483,40 @@ aws ec2 modify-security-group-rules \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
 ```
 
+![test1](https://user-images.githubusercontent.com/110903886/229312714-3a3929b3-79ec-4cd5-8131-aefd91c05388.png)
+![test2](https://user-images.githubusercontent.com/110903886/229312716-c098d64a-2951-4b63-82b4-f228d2b3eddf.png)
+![test3](https://user-images.githubusercontent.com/110903886/229312713-69e02a59-3b0a-4ab4-b681-25275f690fb8.png)
 
+- Create a bash script that changes the ssecuirity group named `rds--update-sg-rule`
 
+```
+#! /usr/bin/bash
 
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="rds-update-sg-rule"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+```
+
+- Update the gitpod.yml so that it runs everytime a new workspace is launched\
+
+```
+  - name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+
+    command: |
+      export GITPOD_IP=$(curl ifconfig.me)
+      source  "$THEIA_WORKSPACE_ROOT/backend-flask/rds-update-sg-rule"
+```
+ 
 
 
 

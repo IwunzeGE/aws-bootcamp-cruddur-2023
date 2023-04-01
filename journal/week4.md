@@ -487,7 +487,7 @@ aws ec2 modify-security-group-rules \
 ![test2](https://user-images.githubusercontent.com/110903886/229312716-c098d64a-2951-4b63-82b4-f228d2b3eddf.png)
 ![test3](https://user-images.githubusercontent.com/110903886/229312713-69e02a59-3b0a-4ab4-b681-25275f690fb8.png)
 
-- Create a bash script that changes the ssecuirity group named `rds--update-sg-rule`
+- Create a bash script that changes the ssecuirity group named `rds-update-sg-rule`
 
 ```
 #! /usr/bin/bash
@@ -502,7 +502,7 @@ aws ec2 modify-security-group-rules \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
 ```
 
-- Update the gitpod.yml so that it runs everytime a new workspace is launched\
+- Update the gitpod.yml so that it runs everytime a new workspace is launched
 
 ```
   - name: postgres

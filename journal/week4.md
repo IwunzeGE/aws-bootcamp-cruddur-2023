@@ -522,6 +522,10 @@ aws ec2 modify-security-group-rules \
 ![prod](https://user-images.githubusercontent.com/110903886/229313152-67cb0a9f-1eb0-43cf-b2a2-ecee9098db72.png)
 
 
+- Load the schema into the database
+
+![rds schema load](https://user-images.githubusercontent.com/110903886/229313278-f35a56c7-b201-4ab5-9a39-2d4be797c0f2.png)
+
 
 
 

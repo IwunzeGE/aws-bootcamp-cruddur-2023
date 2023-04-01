@@ -334,6 +334,8 @@ from pg_stat_activity;"
 
 ![db-setup](https://user-images.githubusercontent.com/110903886/228345451-6a7c99d2-68d5-4e1f-8626-f6ad0324e403.png)
 
+## DB Object and Connection Pool
+
 
 - Let's install the postgres driver. We'll add the following to our `requirments.txt` and install it
 
@@ -421,8 +423,39 @@ class HomeActivities:
       return json[0]
 ```
 
+We should have succesfully implemented our first query
+
+![checkkkkkkkk](https://user-images.githubusercontent.com/110903886/229310949-be875ff3-f2a4-4617-9d11-37551f3a72e0.png)
 
 
+## Connecting with RDS
+
+We already set our RDS connection link as $PROD_URL_CONNECTION
+
+- Let's update our Secuirity group from the AWS console to allow connection from our gitpod IP.
+
+![inbound rules](https://user-images.githubusercontent.com/110903886/229311135-d15f57ed-ef2b-41a4-8e3d-ec18ac52b94f.png)
+
+- To get our gitpod IP address,
+
+```
+curl ifconfig.me
+```
+
+- Set it as an env
+
+```
+GITPOD_IP=$(curl ifconfig.me)
+```
+![IP](https://user-images.githubusercontent.com/110903886/229311222-915f1f86-5487-4487-bc27-e4965861bac9.png)
+
+- Connect using
+
+```
+psql $PROD_URL_CONNECTION
+```
+
+![rds connnect](https://user-images.githubusercontent.com/110903886/229311272-b98a2886-21da-4c8b-ba7c-4a98b5d122c7.png)
 
 
 

@@ -433,7 +433,7 @@ We should have succesfully implemented our first query
 - Set our RDS connection link as $PROD_URL_CONNECTION
 
 ```
-PROD_CONNECTION_URL=postgresql://cruddurroot:Password1234@cruddur-db-instance.ccvmxgrrnpgz.us-east-1.rds.amazonaws.com:5432/cruddur
+PROD_CONNECTION_URL=postgresql://cruddurroot:Password@cruddur-db-instance.ccvmxgrrnpgz.us-east-1.rds.amazonaws.com:5432/cruddur
 ```
 
 - Let's update our Secuirity group from the AWS console to allow connection from our gitpod IP.
@@ -517,7 +517,9 @@ aws ec2 modify-security-group-rules \
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/rds-update-sg-rule"
 ```
  
+- Update the `db-connect` file and run it using `prod`
 
+![prod](https://user-images.githubusercontent.com/110903886/229313152-67cb0a9f-1eb0-43cf-b2a2-ecee9098db72.png)
 
 
 

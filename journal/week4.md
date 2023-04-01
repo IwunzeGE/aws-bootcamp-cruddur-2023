@@ -430,7 +430,11 @@ We should have succesfully implemented our first query
 
 ## Connecting with RDS
 
-We already set our RDS connection link as $PROD_URL_CONNECTION
+- Set our RDS connection link as $PROD_URL_CONNECTION
+
+```
+PROD_CONNECTION_URL=postgresql://cruddurroot:Password1234@cruddur-db-instance.ccvmxgrrnpgz.us-east-1.rds.amazonaws.com:5432/cruddur
+```
 
 - Let's update our Secuirity group from the AWS console to allow connection from our gitpod IP.
 
@@ -464,10 +468,11 @@ We'll create an inbound rule for Postgres (5432) and provide the GITPOD ID.
 We'll get the security group rule id so we can easily modify it in the future from the terminal here in Gitpod.
 
 ```
-export DB_SG_ID="sg-0b725ebab7e25635e"
-gp env DB_SG_ID="sg-0b725ebab7e25635e"
-export DB_SG_RULE_ID="sgr-070061bba156cfa88"
-gp env DB_SG_RULE_ID="sgr-070061bba156cfa88"
+export DB_SG_ID="sg-092eec5941487c33c"
+gp env DB_SG_ID="sg-092eec5941487c33c"
+
+export DB_SG_RULE_ID="sgr-0df0ff668f174dda1"
+gp env DB_SG_RULE_ID="sgr-0df0ff668f174dda1"
 ```
 
 Whenever we need to update our security groups we can do this for access.

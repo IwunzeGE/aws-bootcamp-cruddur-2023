@@ -600,4 +600,9 @@ def lambda_handler(event, context):
 ```
 ![lambda4](https://user-images.githubusercontent.com/110903886/229591694-4d1abe32-f635-4835-a9c7-62cf45eb16bf.png)
 
+- Now lets add our trigger using cognito
+
+![trigger](https://user-images.githubusercontent.com/110903886/229607366-d9284fe9-1794-4817-a929-8e2beaae3b20.png)
+![trgger2](https://user-images.githubusercontent.com/110903886/229607354-ae407e4a-64cb-49c5-b532-60898cbf4210.png)
+
 

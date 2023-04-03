@@ -523,7 +523,17 @@ aws ec2 modify-security-group-rules \
 
 ### Create the handler function
 - Create lambda in same vpc as rds instance Python 3.8
+
+![lambda1](https://user-images.githubusercontent.com/110903886/229589962-eb1e8316-56f7-4891-839d-48a5caeae1b1.png)
+![lambda2](https://user-images.githubusercontent.com/110903886/229589957-3d6576f6-9688-4372-bfa7-ba64bab50c77.png)
+![lambda3](https://user-images.githubusercontent.com/110903886/229589885-38887391-1ef8-434d-9c63-13a69d27f43a.png)
+
+
 - Add a layer for psycopg2 with one of the below methods for development or production
+![lambda layer](https://user-images.githubusercontent.com/110903886/229591544-bea02aed-fb41-4962-be71-3207067d1460.png)
+
+The arn code provided didnt fit in for `us-east-1` so I got the right one from [here](https://github.com/jetbridge/psycopg2-lambda-layer)
+
 
 ### ENV variables needed for the lambda environment.
 
@@ -533,8 +543,13 @@ PG_DATABASE='cruddur'
 PG_USERNAME='root'
 PG_PASSWORD='huEE33z2Qvl383'
 ```
+- Instead we'd use our $PROD_CONNECTION_URL as it already contains all those stated earlier
 
-- The function
+![set env](https://user-images.githubusercontent.com/110903886/229591612-ee408214-ebdc-4147-92ce-9fefc51d4e59.png)
+![set env2](https://user-images.githubusercontent.com/110903886/229591605-04ef3ed6-437e-4e74-9bf0-ebdc4a355a83.png)
+
+
+- Update The function code and deploy
 
 ```
 import json
@@ -583,5 +598,6 @@ def lambda_handler(event, context):
           print('Database connection closed.')
     return event
 ```
+![lambda4](https://user-images.githubusercontent.com/110903886/229591694-4d1abe32-f635-4835-a9c7-62cf45eb16bf.png)
 
 

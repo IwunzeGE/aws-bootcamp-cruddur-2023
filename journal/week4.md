@@ -614,8 +614,26 @@ def lambda_handler(event, context):
 ![vpc config](https://user-images.githubusercontent.com/110903886/229653503-1fabc8d6-fbe8-42c5-9014-686aa9d38e4a.png)
 ![error](https://user-images.githubusercontent.com/110903886/229653518-15645dc7-8eb6-4b9f-bb8c-d1d601e136a9.png)
 
-- To fix the above error, We have to edit the execution roles by creating a custom policy and attaching it 
+- To fix the above error, We have to edit the execution roles by creating a custom policy with the code below and attaching it.
 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeInstances",
+        "ec2:AttachNetworkInterface"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
 ![role1](https://user-images.githubusercontent.com/110903886/229653427-f3b7e588-022d-4b5b-b79c-2b1369b71821.png)
 ![role2](https://user-images.githubusercontent.com/110903886/229653448-da04d9be-5ff1-4d1b-9a69-8e27b2719df2.png)

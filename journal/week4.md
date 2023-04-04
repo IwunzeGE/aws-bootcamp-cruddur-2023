@@ -605,4 +605,38 @@ def lambda_handler(event, context):
 ![trigger](https://user-images.githubusercontent.com/110903886/229607366-d9284fe9-1794-4817-a929-8e2beaae3b20.png)
 ![trgger2](https://user-images.githubusercontent.com/110903886/229607354-ae407e4a-64cb-49c5-b532-60898cbf4210.png)
 
+- Let's try signing up to see if the changes are working perfectly
+
+![signup1](https://user-images.githubusercontent.com/110903886/229653306-e882abf3-c9f7-4874-9d08-4a2c0f5fc64f.png)
+
+- To fix the issue, we'd update our vpc settings
+
+![vpc config](https://user-images.githubusercontent.com/110903886/229653503-1fabc8d6-fbe8-42c5-9014-686aa9d38e4a.png)
+![error](https://user-images.githubusercontent.com/110903886/229653518-15645dc7-8eb6-4b9f-bb8c-d1d601e136a9.png)
+
+- To fix the above error, We have to edit the execution roles by creating a custom policy and attaching it 
+
+
+![role1](https://user-images.githubusercontent.com/110903886/229653427-f3b7e588-022d-4b5b-b79c-2b1369b71821.png)
+![role2](https://user-images.githubusercontent.com/110903886/229653448-da04d9be-5ff1-4d1b-9a69-8e27b2719df2.png)
+![role3](https://user-images.githubusercontent.com/110903886/229653787-6f1bf9f0-26ba-4672-8f2c-1148ce9dc09d.png)
+![role4](https://user-images.githubusercontent.com/110903886/229653815-8c4bce68-9268-4f5a-9cdb-3766f0ef8b14.png)
+![vpc added](https://user-images.githubusercontent.com/110903886/229653820-e7d17eb6-69a7-45bc-ba27-b45980958a05.png)
+
+- I created a new account and my info wasn't added to the to the database. I got the below error from cloudwatch logs and fixed it
+
+![logs](https://user-images.githubusercontent.com/110903886/229654120-a76b2d42-63af-4da8-8920-631571af4e2d.png)
+
+![fix](https://user-images.githubusercontent.com/110903886/229654148-1497c2a5-f6e3-4614-b05f-722a3252d145.png)
+
+- Created a new account and checked the database. Viola!!
+
+![data](https://user-images.githubusercontent.com/110903886/229654267-6b086233-1bdd-4098-8209-0db415450ae8.png)
+
+
+
+
+
+
+
 

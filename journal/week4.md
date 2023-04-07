@@ -933,11 +933,18 @@ WHERE
 - Update fetch request body section of `components/ActivityForm.js`, to include the user_handle.
 ![user2](https://user-images.githubusercontent.com/110903886/230655603-95d9aa9c-f249-4b34-ade1-cd2bdf1f3840.png)
 
+- Assign the `user_handle` variable under `api/activities/route` in `app.py`
+
+**The changes would ensure that the user_handle prop is passed correctly and would get included in the fetch request. So that the server can retrieve it from the request payload.**
+
+![user3](https://user-images.githubusercontent.com/110903886/230656095-677906df-ffb2-4b59-a582-a090a63f58b5.png)
+
+- Tested the `crud` again
+
+![user4](https://user-images.githubusercontent.com/110903886/230656152-839c96b8-0436-4f91-9524-3f0a545715d6.png)
 
 
-
-
-
+![check1](https://user-images.githubusercontent.com/110903886/230656192-d22ccf64-a253-4cec-8888-291e6be41fd6.png)
 
 
 
